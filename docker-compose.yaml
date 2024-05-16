@@ -1,0 +1,27 @@
+services:
+  mysql:
+    container_name: mysql-aurora-bsn
+    image: mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+      MYSQL_DATABASE: security
+      MYSQL_USER: security-user
+      MYSQL_PASSWORD: password1
+      DB_DATA: /var/lib/mysql/data
+      DB_NAME: security
+    volumes:
+      - mysql:/data/mysql
+      - ./docker:/etc/mysql/conf.d:ro
+    ports:
+      - 3306:3306
+    networks:
+      - spring-security
+    restart: unless-stopped
+
+networks:
+  spring-security:
+    driver: bridge
+
+volumes:
+  mysql:
+    driver: local

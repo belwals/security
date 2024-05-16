@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    username: security-user
+    password: password1
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/security
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      format_sql: true
+    database: mysql
+    #    database-platform: org.hibernate.dialect.MySQLDialect
+
+application:
+  security:
+    jwt:
+      secret-key: E3E399C1EB67A28AA1711BFCE8B5wdqqD7gYbIhaZj8mkXTJuAM87UK6wh4x4
+      secret-expiration: 14400
+logging:
+  level:
+    root: debug
